@@ -3,7 +3,8 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>2.25</version>
+    <version>4.51</version>
+    <relativePath/>
   </parent>
 
   <groupId>de.esailors.jenkins</groupId>
@@ -14,19 +15,30 @@
   <url>https://wiki.jenkins-ci.org/display/JENKINS/Test+stability+plugin</url>
   
   <developers>
-  	<developer>
-  		<id>kutzi</id>
-  		<name>Christoph Kutzinski</name>
-  		<email>christoph.kutzinsk@esailors.de</email>
-  		<timezone>-1</timezone>
-  	</developer>
-  	<developer>
-  		<id>seanf</id>
-  		<name>Sean Flanigan</name>
-  		<email>sflaniga@redhat.com</email>
-  		<timezone>+10</timezone>
-  	</developer>
+    <developer>
+      <id>kutzi</id>
+      <name>Christoph Kutzinski</name>
+      <email>christoph.kutzinsk@esailors.de</email>
+      <timezone>-1</timezone>
+    </developer>
+    <developer>
+      <id>seanf</id>
+      <name>Sean Flanigan</name>
+      <email>sflaniga@redhat.com</email>
+      <timezone>+10</timezone>
+    </developer>
   </developers>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.jenkins.tools.bom</groupId>
+        <artifactId>bom-weekly</artifactId>
+        <version>2612.v3d6a_2128c0ef</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <!-- get every artifact through repo.jenkins-ci.org, which proxies all the artifacts that we need -->
   <repositories>
@@ -45,7 +57,7 @@
 
   <properties>
     <!--  to get jenkins.model.queue.AsynchronousExecution for JenkinsRule: -->
-    <jenkins.version>1.607</jenkins.version>
+    <jenkins.version>2.346.3</jenkins.version>
     <jenkins-test-harness.version>2.19</jenkins-test-harness.version>
     <workflow-plugin.version>1.14.2</workflow-plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -58,7 +70,6 @@
           <artifactId>junit</artifactId>
           <scope>compile</scope>
           <!-- updated for https://issues.jenkins-ci.org/browse/JENKINS-26535 -->
-          <version>1.14</version>
       </dependency>
       <!-- test dependencies -->
       <dependency>
@@ -70,25 +81,21 @@
       <dependency>
           <groupId>org.jenkins-ci.plugins.workflow</groupId>
           <artifactId>workflow-basic-steps</artifactId>
-          <version>${workflow-plugin.version}</version>
           <scope>test</scope>
       </dependency>
       <dependency>
           <groupId>org.jenkins-ci.plugins.workflow</groupId>
           <artifactId>workflow-cps</artifactId>
-          <version>${workflow-plugin.version}</version>
           <scope>test</scope>
       </dependency>
       <dependency>
           <groupId>org.jenkins-ci.plugins.workflow</groupId>
           <artifactId>workflow-durable-task-step</artifactId>
-          <version>${workflow-plugin.version}</version>
           <scope>test</scope>
       </dependency>
       <dependency>
           <groupId>org.jenkins-ci.plugins.workflow</groupId>
           <artifactId>workflow-job</artifactId>
-          <version>${workflow-plugin.version}</version>
           <scope>test</scope>
       </dependency>
   </dependencies>
